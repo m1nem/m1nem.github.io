@@ -7,15 +7,13 @@ document.getElementById('contactForm').addEventListener('submit', function(e) {
   const response = document.getElementById('formResponse');
 
   if (!name || !email || !message) {
-    response.textContent = 'Wypełnij wszystkie pola, no ziomuś!';
+    response.textContent = 'Fill the form properly!';
     response.className = 'text-red-500';
     return;
   }
 
-  // Prosta symulacja wysyłki - normalnie tu by był backend lub API
-  response.textContent = 'Dzięki za wiadomość, odezwę się wkrótce!';
+  response.textContent = 'Thanks for the message!';
   response.className = 'text-green-500';
 
-  // Czyszczenie formy
   this.reset();
 });
