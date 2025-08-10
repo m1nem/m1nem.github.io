@@ -1,19 +1,32 @@
-document.getElementById('contactForm').addEventListener('submit', function(e) {
+document.getElementById('contactForm').addEventListener('submit', async function(e) {
   e.preventDefault();
 
-  const name = this.name.value.trim();
-  const email = this.email.value.trim();
-  const message = this.message.value.trim();
-  const response = document.getElementById('formResponse');
+  const form = e.target;
+  const responseEl = document.getElementById('formResponse');
+  const formData = new FormData(form);
 
-  if (!name || !email || !message) {
-    response.textContent = 'Fill the form properly!';
-    response.className = 'text-red-500';
-    return;
+  try {
+    const res = await fetch(form.action, {
+      method: form.method,
+      body: formData,
+      headers: { 'Accept': 'application/json' }
+    });
+
+    if (res.ok) {
+      responseEl.textContent = '✅ Thanks for your message!';
+      responseEl.className = 'text-green-500';
+      form.reset();
+    } else {
+      const data = await res.json();
+      if (data.errors) {
+        responseEl.textContent = data.errors.map(err => err.message).join(', ');
+      } else {
+        responseEl.textContent = '❌ Something went wrong.';
+      }
+      responseEl.className = 'text-red-500';
+    }
+  } catch (err) {
+    responseEl.textContent = '⚠️ Error sending message.';
+    responseEl.className = 'text-red-500';
   }
-
-  response.textContent = 'Thanks for the message!';
-  response.className = 'text-green-500';
-
-  this.reset();
 });
