@@ -6,16 +6,15 @@
   <title>m1nem | portfolio</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
 </head>
 <body class="bg-[#0e0e0e] text-gray-100 font-sans">
 
-  <header id="mainHeader" class="bg-[#141414] w-full border-b border-black shadow-lg fixed top-0 left-0 z-50 transition-all duration-300">
+  <header id="mainHeader" class="w-full fixed top-0 left-0 z-50 transition-all duration-300">
   <div class="max-w-5xl mx-auto flex justify-between items-center p-4 transition-all duration-300">
     <h1 class="text-[1.4rem] font-bold transition-all duration-300">
-      <a href="./index.html" rel="m1nem" class="bg-gradient-to-r from-gray-300 via-white to-gray-300 bg-clip-text text-transparent glow-text"> m1nem
-  </a>
-</h1>
+      <a href="./index.html" rel="m1nem" class="bg-gradient-to-r from-gray-300 via-white to-gray-300 bg-clip-text text-transparent glow-text">m1nem</a>
+    </h1>
     <nav>
       <ul class="flex gap-6 text-lg">
         <li><a href="#about" class="hover:text-indigo-400 transition">About me</a></li>
@@ -25,6 +24,19 @@
     </nav>
   </div>
   </header>
+
+  <div class="relative w-full h-[400px] overflow-hidden">
+    <img src="banner.png" alt="Banner" class="w-full h-full object-cover">
+    <div class="absolute inset-0 bg-gradient-to-b from-black/40 to-black/20"></div>
+    <div class="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
+      <h2 class="text-4xl md:text-5xl font-bold text-white drop-shadow-lg bebas-neue-regular">
+        Sleek Code. Bold Design. Real Results
+      </h2>
+      <p class="mt-4 text-lg md:text-xl text-gray-200 drop-shadow">
+        No fluff. Just <u>digital excellence</u>.
+      </p>
+    </div>
+  </div>
 
   <div class="h-24"></div>
 
@@ -36,17 +48,19 @@
     window.addEventListener("scroll", () => {
       if (window.scrollY > 50) {
         headerInner.classList.remove("p-4");
-        headerInner.classList.add("p-5");
-        title.style.fontSize = "1.5rem";
+        headerInner.classList.add("p-3");
+        title.style.fontSize = "1.2rem";
+        header.classList.add("scrolled");
       } else {
-        headerInner.classList.remove("p-5");
+        headerInner.classList.remove("p-3");
         headerInner.classList.add("p-4");
         title.style.fontSize = "1.4rem";
+        header.classList.remove("scrolled");
       }
     });
   </script>
 
-  <section id="about" class="max-w-4xl mx-auto p-6 mt-12">
+  <section id="about" class="max-w-4xl mx-auto p-6 mt-1">
     <h2 class="text-4xl font-semibold mb-4 border-b-2 border-indigo-500 inline-block glow-text">About me</h2>
     <p class="text-lg leading-relaxed mt-4">
       Hey! name's m1nem. I'm a 16 year old trying to raise some college funds. I build websites, work with databases, and create simple graphics. This portfolio showcases my projects and how I break down code like a pro.
@@ -83,11 +97,11 @@
     <h2 class="text-4xl font-semibold mb-6 border-b-2 border-indigo-500 inline-block glow-text">Contact</h2>
     <form id="contactForm" action="https://formspree.io/f/mldlaoya" method="POST" class="flex flex-col gap-4 max-w-md">
       <input type="text" name="name" id="name" placeholder="Name / Nickname" required
-             class="p-3 rounded-xl bg-gray-700 text-gray-100 focus:outline-indigo-400" />
+             class="p-3 rounded-xl bg-[#181818] text-gray-100 focus:outline-indigo-400" />
       <input type="email" name="email" id="email" placeholder="E-mail" required
-             class="p-3 rounded-xl bg-gray-700 text-gray-100 focus:outline-indigo-400" />
+             class="p-3 rounded-xl bg-[#181818] text-gray-100 focus:outline-indigo-400" />
       <textarea id="message" name="message" placeholder="Message" rows="4" required
-                class="p-3 rounded-xl bg-gray-700 text-gray-100 focus:outline-indigo-400"></textarea>
+                class="p-3 rounded-xl bg-[#181818] text-gray-100 focus:outline-indigo-400"></textarea>
       <button type="submit" class="bg-[#282828] border-gray-700 border hover:bg-[#181818] transition p-3 rounded-xl font-semibold text-white">Send</button>
     </form>
     <p id="formResponse" class="mt-4"></p>
